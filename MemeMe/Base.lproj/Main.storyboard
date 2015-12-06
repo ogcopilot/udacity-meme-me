@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIv-3l-ylb">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35I-I1-qpl" userLabel="TopToolbar">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="fMD-Md-t2P"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ORo-SN-TVc"/>
+                                    <barButtonItem systemItem="action" id="Fxu-en-a2p" userLabel="Share"/>
+                                    <barButtonItem width="128" style="plain" systemItem="fixedSpace" id="ogY-3U-zaV"/>
+                                    <barButtonItem systemItem="cancel" id="4UW-iZ-r5y"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Olx-Ov-WVp"/>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-z3-GpV" userLabel="BottomToolbar">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9xI-dg-QAw"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lcM-sy-dAQ"/>
+                                    <barButtonItem systemItem="camera" id="20W-Fa-Dua" userLabel="Camera"/>
+                                    <barButtonItem width="128" style="plain" systemItem="fixedSpace" id="A3P-HO-fjV"/>
+                                    <barButtonItem systemItem="organize" id="uMS-Ub-pQB" userLabel="Album"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="77t-mX-XaI"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="35I-I1-qpl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0XG-Cl-aKS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BIv-3l-ylb" secondAttribute="bottom" id="4Pq-5F-jKU"/>
+                            <constraint firstItem="BIv-3l-ylb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7dk-zH-pir"/>
+                            <constraint firstItem="35I-I1-qpl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Flh-lF-S4J"/>
+                            <constraint firstItem="BIv-3l-ylb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LKA-yQ-mXw"/>
+                            <constraint firstItem="BIv-3l-ylb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LbK-wc-znt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Kqa-z3-GpV" secondAttribute="bottom" id="YUM-cp-RH1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BIv-3l-ylb" secondAttribute="trailing" id="exP-tW-IfK"/>
+                            <constraint firstAttribute="trailing" secondItem="Kqa-z3-GpV" secondAttribute="trailing" id="j6C-p0-GER"/>
+                            <constraint firstItem="35I-I1-qpl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="o1S-Kb-Akw"/>
+                            <constraint firstAttribute="trailing" secondItem="35I-I1-qpl" secondAttribute="trailing" id="q4h-OU-Sp1"/>
+                            <constraint firstItem="BIv-3l-ylb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qsN-2q-3zv"/>
+                            <constraint firstItem="Kqa-z3-GpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sB9-bN-SQc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="429"/>
+        </scene>
+    </scenes>
+</document>
