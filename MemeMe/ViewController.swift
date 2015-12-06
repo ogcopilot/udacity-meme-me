@@ -10,7 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var cancelBtn: UIBarButtonItem!
+    @IBOutlet weak var shareBtn: UIBarButtonItem!
+    @IBOutlet weak var albumBtn: UIBarButtonItem!
+    @IBOutlet weak var cameraBtn: UIBarButtonItem!
+    
     override func viewDidLoad() {
+        cameraBtn.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
