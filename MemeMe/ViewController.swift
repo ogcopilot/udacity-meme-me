@@ -9,7 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    
     @IBOutlet weak var cancelBtn: UIBarButtonItem!
     @IBOutlet weak var shareBtn: UIBarButtonItem!
     @IBOutlet weak var albumBtn: UIBarButtonItem!
@@ -22,7 +24,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         cameraBtn.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
-        shareBtn.enabled = false
         setTextFieldAttributes(topText)
         setTextFieldAttributes(bottomText)
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -77,39 +78,60 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField.tag == 1 && textField.text != "TOP") {
+           textField.text = ""
+        }
+        if (textField.tag == 2 && textField.text != "BOTTOM") {
+            textField.text = ""
+        }
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     
-    func setTextFieldAttributes(field: UITextField) {
+    func setTextFieldAttributes(textField: UITextField) {
         let attributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : -3
         ]
-        field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: attributes)
-        field.defaultTextAttributes = attributes
-        field.textAlignment = .Center
-        field.delegate = self
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: attributes)
+        textField.defaultTextAttributes = attributes
+        textField.textAlignment = .Center
+        textField.delegate = self
     }
     
     func presentImagePicker(source: UIImagePickerControllerSourceType) {
         let imagePick = UIImagePickerController()
+        imagePick.sourceType = source
         imagePick.delegate = self
         self.presentViewController(imagePick, animated: true, completion: nil)
     }
+    
+    func makeMemeImage() -> UIImage {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return memedImage
+    }
 
     @IBAction func shareMeme(sender: AnyObject) {
-        
+        let newMeme = self.makeMemeImage()
+        let activityVC = UIActivityViewController(activityItems: [newMeme], applicationActivities: nil)
+        self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func pickFromCamera(sender: AnyObject) {
-        presentImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
+        presentImagePicker(UIImagePickerControllerSourceType.Camera)
     }
     
     @IBAction func pickFromAlbums(sender: AnyObject) {
-        presentImagePicker(UIImagePickerControllerSourceType.Camera)
+        presentImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
     }
 }
 

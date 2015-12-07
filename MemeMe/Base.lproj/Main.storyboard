@@ -56,7 +56,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="77t-mX-XaI"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3F2-Ar-wW6">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3F2-Ar-wW6">
                                 <rect key="frame" x="20" y="40" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="sVL-LK-w2I"/>
@@ -64,7 +64,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-9I-rVb" userLabel="BOTTOM">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-9I-rVb" userLabel="BOTTOM">
                                 <rect key="frame" x="20" y="480" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="WVZ-AL-F5s"/>
@@ -101,11 +101,13 @@
                     <connections>
                         <outlet property="albumBtn" destination="uMS-Ub-pQB" id="BCM-kG-doc"/>
                         <outlet property="bottomText" destination="eGI-9I-rVb" id="th1-OH-kaK"/>
+                        <outlet property="bottomToolbar" destination="Kqa-z3-GpV" id="c27-j5-FaL"/>
                         <outlet property="cameraBtn" destination="20W-Fa-Dua" id="FXx-la-bfo"/>
                         <outlet property="cancelBtn" destination="4UW-iZ-r5y" id="Bxc-LR-0LO"/>
                         <outlet property="memeImage" destination="BIv-3l-ylb" id="LRl-bv-ic3"/>
                         <outlet property="shareBtn" destination="Fxu-en-a2p" id="PCr-Z0-4t2"/>
                         <outlet property="topText" destination="3F2-Ar-wW6" id="Uhp-iH-EpX"/>
+                        <outlet property="topToolbar" destination="35I-I1-qpl" id="JoD-FW-s8v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

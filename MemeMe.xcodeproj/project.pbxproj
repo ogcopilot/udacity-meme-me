@@ -12,6 +12,7 @@
 		5D803A631C14D59C00F8B6E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D803A611C14D59C00F8B6E1 /* Main.storyboard */; };
 		5D803A651C14D59C00F8B6E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D803A641C14D59C00F8B6E1 /* Assets.xcassets */; };
 		5D803A681C14D59C00F8B6E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D803A661C14D59C00F8B6E1 /* LaunchScreen.storyboard */; };
+		5DE834FC1C16274800965674 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE834FB1C16274800965674 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5D803A641C14D59C00F8B6E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D803A671C14D59C00F8B6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D803A691C14D59C00F8B6E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DE834FB1C16274800965674 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				5D803A641C14D59C00F8B6E1 /* Assets.xcassets */,
 				5D803A661C14D59C00F8B6E1 /* LaunchScreen.storyboard */,
 				5D803A691C14D59C00F8B6E1 /* Info.plist */,
+				5DE834FB1C16274800965674 /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DE834FC1C16274800965674 /* Meme.swift in Sources */,
 				5D803A601C14D59C00F8B6E1 /* ViewController.swift in Sources */,
 				5D803A5E1C14D59C00F8B6E1 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +288,7 @@
 				5D803A6E1C14D59C00F8B6E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
