@@ -27,6 +27,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setupTextFields(bottomText)
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.unsubscribeFromKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+
+    
+    func keyboardWillShow(notification: NSNotification) {
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+    }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -46,21 +75,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : -3
         ]
+        field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: attributes)
         field.defaultTextAttributes = attributes
         field.textAlignment = .Center
     }
-
-    @IBAction func pickFromCamera(sender: AnyObject) {
+    
+    func presentImagePicker(source: UIImagePickerControllerSourceType) {
         let imagePick = UIImagePickerController()
         imagePick.delegate = self
         self.presentViewController(imagePick, animated: true, completion: nil)
     }
+
+    @IBAction func pickFromCamera(sender: AnyObject) {
+        presentImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
+    }
     
     @IBAction func pickFromAlbums(sender: AnyObject) {
-        let imagePick = UIImagePickerController()
-        imagePick.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        imagePick.delegate = self
-        self.presentViewController(imagePick, animated: true, completion: nil)
+        presentImagePicker(UIImagePickerControllerSourceType.Camera)
     }
 }
 
