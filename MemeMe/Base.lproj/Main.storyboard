@@ -26,7 +26,11 @@
                                     <constraint firstAttribute="height" constant="44" id="fMD-Md-t2P"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="action" id="Fxu-en-a2p" userLabel="Share"/>
+                                    <barButtonItem systemItem="action" id="Fxu-en-a2p" userLabel="Share">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="71G-aI-zn4"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Olx-Ov-WVp"/>
                                     <barButtonItem systemItem="cancel" id="4UW-iZ-r5y"/>
                                 </items>

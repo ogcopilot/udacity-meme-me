@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var cancelBtn: UIBarButtonItem!
     @IBOutlet weak var shareBtn: UIBarButtonItem!
@@ -23,8 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         cameraBtn.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         shareBtn.enabled = false
-        setupTextFields(topText)
-        setupTextFields(bottomText)
+        setTextFieldAttributes(topText)
+        setTextFieldAttributes(bottomText)
         super.viewDidLoad()
     }
     
@@ -40,15 +40,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
-
     
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if (bottomText.isFirstResponder()) {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if (bottomText.isFirstResponder()) {
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
@@ -68,7 +77,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func setupTextFields(field: UITextField) {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func setTextFieldAttributes(field: UITextField) {
         let attributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -78,6 +91,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         field.attributedPlaceholder = NSAttributedString(string: field.placeholder!, attributes: attributes)
         field.defaultTextAttributes = attributes
         field.textAlignment = .Center
+        field.delegate = self
     }
     
     func presentImagePicker(source: UIImagePickerControllerSourceType) {
@@ -86,6 +100,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(imagePick, animated: true, completion: nil)
     }
 
+    @IBAction func shareMeme(sender: AnyObject) {
+        
+    }
+    
     @IBAction func pickFromCamera(sender: AnyObject) {
         presentImagePicker(UIImagePickerControllerSourceType.PhotoLibrary)
     }
