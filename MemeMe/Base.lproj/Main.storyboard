@@ -32,7 +32,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Olx-Ov-WVp"/>
-                                    <barButtonItem systemItem="cancel" id="4UW-iZ-r5y"/>
+                                    <barButtonItem systemItem="cancel" id="4UW-iZ-r5y">
+                                        <connections>
+                                            <action selector="cancelMeme:" destination="BYZ-38-t0r" id="xQM-Sh-eOL"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-z3-GpV" userLabel="BottomToolbar">
@@ -56,16 +60,16 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="77t-mX-XaI"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3F2-Ar-wW6">
-                                <rect key="frame" x="20" y="40" width="560" height="100"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3F2-Ar-wW6">
+                                <rect key="frame" x="20" y="80" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="sVL-LK-w2I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-9I-rVb" userLabel="BOTTOM">
-                                <rect key="frame" x="20" y="480" width="560" height="100"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-9I-rVb" userLabel="Bottom Text">
+                                <rect key="frame" x="20" y="440" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="WVZ-AL-F5s"/>
                                 </constraints>
@@ -76,7 +80,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="35I-I1-qpl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0XG-Cl-aKS"/>
-                            <constraint firstItem="eGI-9I-rVb" firstAttribute="bottom" secondItem="BIv-3l-ylb" secondAttribute="bottom" constant="-20" id="1cj-EX-1cY"/>
+                            <constraint firstItem="eGI-9I-rVb" firstAttribute="bottom" secondItem="BIv-3l-ylb" secondAttribute="bottom" constant="-60" id="1cj-EX-1cY"/>
                             <constraint firstItem="eGI-9I-rVb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="37t-zt-QoX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BIv-3l-ylb" secondAttribute="bottom" id="4Pq-5F-jKU"/>
                             <constraint firstItem="BIv-3l-ylb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7dk-zH-pir"/>
@@ -95,7 +99,7 @@
                             <constraint firstAttribute="trailing" secondItem="35I-I1-qpl" secondAttribute="trailing" id="q4h-OU-Sp1"/>
                             <constraint firstItem="BIv-3l-ylb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qsN-2q-3zv"/>
                             <constraint firstItem="Kqa-z3-GpV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sB9-bN-SQc"/>
-                            <constraint firstItem="3F2-Ar-wW6" firstAttribute="top" secondItem="BIv-3l-ylb" secondAttribute="top" constant="20" id="wOr-jf-muV"/>
+                            <constraint firstItem="3F2-Ar-wW6" firstAttribute="top" secondItem="BIv-3l-ylb" secondAttribute="top" constant="60" id="wOr-jf-muV"/>
                         </constraints>
                     </view>
                     <connections>
