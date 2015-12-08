@@ -97,7 +97,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.memeImage.image = image
+            var bounds = CGRect()
+            bounds.origin = CGPointZero
+            bounds.size = image.size;
+            
+            self.memeImage.bounds = bounds;
+            self.memeImage.image = image;
+            self.memeImage.contentMode = .ScaleAspectFill
+            
             shareBtn.enabled = true
             cancelBtn.enabled = true
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -147,8 +154,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func cancelMeme(sender: AnyObject) {
         memeImage.image = nil
-        topText.text = ""
-        bottomText.text = ""
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
     }
     
     @IBAction func pickFromCamera(sender: AnyObject) {
