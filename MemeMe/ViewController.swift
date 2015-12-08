@@ -33,12 +33,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.subscribeToKeyboardNotifications()
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     
     func subscribeToKeyboardNotifications() {
@@ -53,13 +53,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func keyboardWillShow(notification: NSNotification) {
         if (bottomText.isFirstResponder()) {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if (bottomText.isFirstResponder()) {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     
@@ -112,6 +112,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        clearMeme()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -141,21 +142,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // eventually this will be persisted somewhere (I guess?)
         _ = Meme(topText: topText.text!, bottomText: bottomText.text!, image: memeImage.image!, memedImage: memedImage)
     }
+    
+    func clearMeme() {
+        memeImage.image = nil
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+        shareBtn.enabled = true
+        cancelBtn.enabled = true
+    }
 
     @IBAction func shareMeme(sender: AnyObject) {
         let newMeme = self.makeMemeImage()
         let activityVC = UIActivityViewController(activityItems: [newMeme], applicationActivities: nil)
         activityVC.completionWithItemsHandler = {
             (s: String?, ok: Bool, items: [AnyObject]?, err: NSError?) -> Void in
-            self.saveMeme(newMeme)
+            if (ok) {
+                self.saveMeme(newMeme)
+            }
         }
         self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
     @IBAction func cancelMeme(sender: AnyObject) {
-        memeImage.image = nil
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
+        clearMeme()
     }
     
     @IBAction func pickFromCamera(sender: AnyObject) {
